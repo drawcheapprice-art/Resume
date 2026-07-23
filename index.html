@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phonlaphat Suwannakhot — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#12203a;
+    --navy-deep:#0b1526;
+    --paper:#f5efe3;
+    --paper-dim:#eee6d4;
+    --gold:#e2a63d;
+    --teal:#2c9c93;
+    --ink:#221d15;
+    --ink-soft:#4a4436;
+    --cream-text:#f4efe4;
+    --line: rgba(34,29,21,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'IBM Plex Sans',sans-serif;
+    background:var(--paper);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Prompt',sans-serif;
+    letter-spacing:0.01em;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- MARQUEE STRIP ---------- */
+  .marquee-strip{
+    background:var(--gold);
+    color:var(--navy-deep);
+    overflow:hidden;
+    white-space:nowrap;
+    border-bottom:3px solid var(--navy-deep);
+  }
+  .marquee-track{
+    display:inline-block;
+    padding:7px 0;
+    font-family:'Prompt',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    letter-spacing:0.12em;
+    animation: scroll-left 30s linear infinite;
+  }
+  .marquee-track span{margin:0 22px;}
+  @keyframes scroll-left{
+    0%{transform:translateX(0);}
+    100%{transform:translateX(-50%);}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    background:
+      radial-gradient(ellipse at 15% 0%, rgba(226,166,61,0.15), transparent 55%),
+      linear-gradient(180deg,var(--navy) 0%, var(--navy-deep) 100%);
+    color:var(--cream-text);
+    padding:64px 0 90px;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns: 1.3fr 0.8fr;
+    gap:40px;
+    align-items:center;
+  }
+  .eyebrow{
+    font-family:'Prompt',sans-serif;
+    font-weight:600;
+    font-size:12.5px;
+    letter-spacing:0.22em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(38px,6vw,64px);
+    font-weight:800;
+    line-height:1.02;
+    margin:0 0 6px;
+    text-transform:uppercase;
+  }
+  .hero .role{
+    font-family:'Prompt',sans-serif;
+    font-weight:600;
+    font-size:clamp(15px,2vw,19px);
+    color:var(--teal);
+    letter-spacing:0.04em;
+    margin-bottom:22px;
+  }
+  .hero p.lede{
+    font-size:16px;
+    line-height:1.75;
+    color:rgba(244,239,228,0.82);
+    max-width:520px;
+    margin:0 0 30px;
+  }
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{
+    font-family:'Prompt',sans-serif;
+    font-weight:600;
+    font-size:14px;
+    padding:12px 24px;
+    border-radius:3px;
+    text-decoration:none;
+    display:inline-block;
+    transition:transform .18s ease, box-shadow .18s ease;
+    border:2px solid transparent;
+  }
+  .btn-primary{background:var(--gold);color:var(--navy-deep);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 18px rgba(226,166,61,0.35);}
+  .btn-ghost{border-color:rgba(244,239,228,0.4);color:var(--cream-text);}
+  .btn-ghost:hover{transform:translateY(-2px);border-color:var(--gold);color:var(--gold);}
+
+  /* crew badge */
+  .badge-wrap{display:flex;justify-content:center;}
+  .badge{
+    background:var(--paper);
+    color:var(--ink);
+    width:230px;
+    padding:16px 16px 20px;
+    border-radius:4px;
+    box-shadow:0 22px 45px rgba(0,0,0,0.45);
+    transform:rotate(-4deg);
+    position:relative;
+  }
+  .badge::before{
+    content:'';
+    position:absolute;
+    top:-14px;left:50%;
+    transform:translateX(-50%);
+    width:70px;height:16px;
+    background:var(--navy-deep);
+    border-radius:2px;
+    box-shadow:0 2px 4px rgba(0,0,0,0.3);
+  }
+  .badge::after{
+    content:'ACCESS: ALL AREAS';
+    position:absolute;
+    bottom:-11px;left:50%;
+    transform:translateX(-50%);
+    background:var(--teal);
+    color:var(--navy-deep);
+    font-family:'Prompt',sans-serif;
+    font-weight:700;
+    font-size:9px;
+    letter-spacing:0.08em;
+    padding:3px 10px;
+    border-radius:20px;
+    white-space:nowrap;
+  }
+  .badge img{
+    width:100%;
+    aspect-ratio:3/3.4;
+    object-fit:cover;
+    border-radius:2px;
+    display:block;
+    filter:saturate(1.02);
+  }
+  .badge .b-name{
+    font-family:'Prompt',sans-serif;
+    font-weight:700;
+    font-size:14px;
+    margin-top:12px;
+    text-transform:uppercase;
+    line-height:1.2;
+  }
+  .badge .b-role{
+    font-size:11px;
+    color:var(--ink-soft);
+    margin-top:2px;
+  }
+  .badge .b-id{
+    margin-top:8px;
+    font-size:9.5px;
+    letter-spacing:0.08em;
+    color:var(--ink-soft);
+    border-top:1px dashed var(--line);
+    padding-top:6px;
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{padding:64px 0;}
+  .sec-head{
+    display:flex;
+    align-items:baseline;
+    gap:14px;
+    margin-bottom:34px;
+  }
+  .sec-num{
+    font-family:'Prompt',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    color:var(--teal);
+    letter-spacing:0.1em;
+  }
+  .sec-head h2{
+    font-size:26px;
+    font-weight:700;
+    margin:0;
+    text-transform:uppercase;
+  }
+  .sec-head .rule{flex:1;height:2px;background:var(--line);}
+
+  /* ---------- ABOUT ---------- */
+  .about-sec p{
+    font-size:16px;
+    line-height:1.85;
+    color:var(--ink-soft);
+    max-width:700px;
+  }
+  .about-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px;}
+  .tag{
+    font-family:'Prompt',sans-serif;
+    font-size:12px;
+    font-weight:500;
+    background:var(--paper-dim);
+    border:1px solid var(--line);
+    padding:6px 13px;
+    border-radius:20px;
+  }
+
+  /* ---------- EXPERIENCE (call sheet) ---------- */
+  .callsheet{border-top:2px solid var(--ink);}
+  .cs-row{
+    display:grid;
+    grid-template-columns: 100px 1fr auto;
+    gap:20px;
+    padding:22px 0;
+    border-bottom:1px solid var(--line);
+  }
+  .cs-date{
+    font-family:'Prompt',sans-serif;
+    font-weight:600;
+    font-size:12.5px;
+    color:var(--teal);
+    padding-top:3px;
+  }
+  .cs-role{font-family:'Prompt',sans-serif;font-weight:700;font-size:17px;margin:0 0 2px;}
+  .cs-org{font-size:13.5px;color:var(--ink-soft);margin-bottom:10px;}
+  .cs-row ul{margin:0;padding-left:18px;}
+  .cs-row li{font-size:14.5px;line-height:1.7;color:var(--ink-soft);}
+  .cs-link{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    margin-top:10px;
+    font-family:'Prompt',sans-serif;
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--navy);
+    text-decoration:none;
+    border-bottom:1.5px solid var(--gold);
+    padding-bottom:1px;
+  }
+  .cs-link:hover{color:var(--gold);}
+
+  /* ---------- PINBOARD PORTFOLIO ---------- */
+  .pinboard-sec{
+    background:
+      repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(0,0,0,0.035) 28px),
+      var(--navy-deep);
+    color:var(--cream-text);
+  }
+  .pinboard-sec .sec-head .rule{background:rgba(244,239,228,0.16);}
+  .pinboard-sec .sec-head h2{color:var(--cream-text);}
+  .pin-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:34px 26px;
+    padding-top:10px;
+  }
+  .pin-card{
+    background:var(--paper);
+    color:var(--ink);
+    border-radius:2px;
+    box-shadow:0 16px 34px rgba(0,0,0,0.35);
+    padding:0 0 18px;
+    position:relative;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .pin-card:nth-child(odd){transform:rotate(-2.4deg);}
+  .pin-card:nth-child(even){transform:rotate(2deg);}
+  .pin-card:hover{transform:rotate(0deg) translateY(-6px);box-shadow:0 22px 40px rgba(0,0,0,0.45);}
+  .pin-tape{
+    position:absolute;top:-10px;left:50%;
+    transform:translateX(-50%) rotate(-3deg);
+    width:64px;height:22px;
+    background:rgba(226,166,61,0.55);
+    border:1px solid rgba(226,166,61,0.7);
+  }
+  .pin-thumb{
+    height:130px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Prompt',sans-serif;
+    font-weight:800;
+    font-size:13px;
+    letter-spacing:0.08em;
+    color:rgba(255,255,255,0.92);
+    text-transform:uppercase;
+    text-align:center;
+    padding:0 10px;
+  }
+  .pin-body{padding:16px 18px 0;}
+  .pin-year{
+    font-family:'Prompt',sans-serif;
+    font-size:11px;
+    font-weight:700;
+    color:var(--teal);
+    letter-spacing:0.08em;
+  }
+  .pin-title{font-family:'Prompt',sans-serif;font-weight:700;font-size:16px;margin:5px 0 6px;}
+  .pin-desc{font-size:13px;line-height:1.6;color:var(--ink-soft);margin:0 0 12px;}
+  .pin-links{display:flex;gap:8px;flex-wrap:wrap;}
+  .pin-link{
+    font-family:'Prompt',sans-serif;
+    font-size:11.5px;
+    font-weight:600;
+    background:var(--navy-deep);
+    color:var(--cream-text);
+    padding:6px 12px;
+    border-radius:20px;
+    text-decoration:none;
+    transition:background .18s ease;
+  }
+  .pin-link:hover{background:var(--teal);color:var(--navy-deep);}
+
+  /* ---------- AWARD ---------- */
+  .award-grid{display:flex;flex-direction:column;gap:18px;}
+  .award-card{
+    display:flex;
+    align-items:center;
+    gap:24px;
+    background:linear-gradient(135deg, #f0d9a3, var(--gold));
+    color:var(--navy-deep);
+    padding:26px 30px;
+    border-radius:4px;
+    max-width:640px;
+    box-shadow:0 14px 30px rgba(226,166,61,0.25);
+  }
+  .award-ribbon{
+    font-size:38px;
+    line-height:1;
+  }
+  .award-title{font-family:'Prompt',sans-serif;font-weight:800;font-size:18px;margin:0 0 4px;}
+  .award-sub{font-size:13.5px;margin:0 0 10px;color:rgba(11,21,38,0.75);}
+  .award-card .cs-link{color:var(--navy-deep);border-bottom-color:var(--navy-deep);}
+
+  /* ---------- FOOTER / CALL SHEET STAMP ---------- */
+  footer{
+    background:var(--navy-deep);
+    color:var(--cream-text);
+    padding:56px 0 40px;
+    position:relative;
+  }
+  .foot-grid{
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:40px;
+    align-items:start;
+  }
+  .foot-contact h3{
+    font-size:13px;
+    letter-spacing:0.14em;
+    color:var(--gold);
+    margin:0 0 16px;
+  }
+  .foot-contact ul{list-style:none;margin:0;padding:0;}
+  .foot-contact li{
+    font-size:14.5px;
+    margin-bottom:10px;
+    color:rgba(244,239,228,0.85);
+  }
+  .foot-contact a{text-decoration:none;color:inherit;}
+  .foot-contact a:hover{color:var(--gold);}
+  .stamp{
+    border:3px solid var(--gold);
+    color:var(--gold);
+    font-family:'Prompt',sans-serif;
+    font-weight:800;
+    font-size:13px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:16px 20px;
+    border-radius:6px;
+    transform:rotate(-6deg);
+    text-align:center;
+    line-height:1.5;
+    white-space:nowrap;
+  }
+  .stamp small{
+    display:block;
+    font-size:10px;
+    font-weight:500;
+    letter-spacing:0.1em;
+    color:rgba(226,166,61,0.75);
+    margin-top:4px;
+  }
+  .foot-bottom{
+    margin-top:44px;
+    padding-top:20px;
+    border-top:1px solid rgba(244,239,228,0.14);
+    font-size:12px;
+    color:rgba(244,239,228,0.45);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  @media (max-width:760px){
+    .hero-grid{grid-template-columns:1fr;}
+    .badge-wrap{order:-1;margin-bottom:10px;}
+    .badge{transform:rotate(-2deg);width:190px;}
+    .cs-row{grid-template-columns:1fr;gap:6px;}
+    .cs-date{padding-top:0;}
+    .foot-grid{grid-template-columns:1fr;}
+    .stamp{transform:rotate(-2deg);width:fit-content;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .marquee-track{animation:none;}
+    .pin-card, .btn{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>COLLIDE (2026) — BEST SHORT FILM</span>
+    <span>★</span>
+    <span>SIHNSART SHOW 18 — GOTHEL: THE OTHER SIDE OF THE TOWER</span>
+    <span>★</span>
+    <span>TIKTOK EFFECT HOUSE 2022 — 1st PLACE THAILAND</span>
+    <span>★</span>
+    <span>LA-BYE</span>
+    <span>★</span>
+    <span>COLLIDE (2026) — BEST SHORT FILM</span>
+    <span>★</span>
+    <span>SIHNSART SHOW 18 — GOTHEL: THE OTHER SIDE OF THE TOWER</span>
+    <span>★</span>
+    <span>TIKTOK EFFECT HOUSE 2022 — 1st PLACE THAILAND</span>
+    <span>★</span>
+    <span>LA-BYE</span>
+    <span>★</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow">Marketing · Event Production · Graphic Design</div>
+      <h1>Phonlaphat<br>Suwannakhot</h1>
+      <div class="role">MARKETING ADMINISTRATOR</div>
+      <p class="lede">
+        English major at Mae Fah Luang University with hands-on experience in event
+        organization, graphic design, and student activities — from poster design and
+        equipment leadership to AR effects and short-film editing, including a
+        national 1st place win.
+      </p>
+      <div class="hero-cta">
+        <a href="#portfolio" class="btn btn-primary">View All Work</a>
+        <a href="#contact" class="btn btn-ghost">Contact Me</a>
+      </div>
+    </div>
+    <div class="badge-wrap">
+      <div class="badge">
+        <img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAUDBAQEAwUEBAQFBQUGBwwIBwcHBw8LCwkMEQ8SEhEPERETFhwXExQaFRERGCEYGh0dHx8fExciJCIeJBweHx7/2wBDAQUFBQcGBw4ICA4eFBEUHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh4eHh7/wAARCAKnAlgDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD55+Avwk1f4va/qGj6Pqljp8tjai5d7sOVZd4XA2g8817H/wAMSeOP+hw8O/8AfM3/AMTR/wAE2/8Akpfib/sDj/0clfd1AHwj/wAMSeOP+hw8O/8AfM3/AMTR/wAMSeOP+hw8O/8AfM3/AMTX3dRQB8I/8MSeOP8AocPDv/fM3/xNH/DEnjj/AKHDw7/3zN/8TX3dRQB8I/8ADEnjj/ocPDv/AHzN/wDE0f8ADEnjj/ocPDv/AHzN/wDE193UUAfCP/DEnjj/AKHDw7/3zN/8TR/wxJ44/wChw8O/98zf/E193UUAfCP/AAxJ44/6HDw7/wB8zf8AxNH/AAxJ44/6HDw7/wB8zf8AxNfd1FAHwj/wxJ44/wChw8O/98zf/E0f8MSeOP8AocPDv/fM3/xNfd1FAHwj/wAMSeOP+hw8O/8AfM3/AMTR/wAMSeOP+hw8O/8AfM3/AMTX3dRQB8I/8MSeOP8AocPDv/fM3/xNH/DEnjj/AKHDw7/3zN/8TX3dRQB8I/8ADEnjj/ocPDv/AHzN/wDE0f8ADEnjj/ocPDv/AHzN/wDE193UUAfCP/DEnjj/AKHDw7/3zN/8TR/wxJ44/wChw8O/98zf/E193UUAfCP/AAxJ44/6HDw7/wB8zf8AxNH/AAxJ44/6HDw7/wB8zf8AxNfd1FAHwj/wxJ44/wChw8O/98zf/E0f8MSeOP8AocPDv/fM3/xNfd1FAHwj/wAMSeOP+hw8O/8AfM3/AMTR/wAMSeOP+hw8O/8AfM3/AMTX3dRQB8I/8MSeOP8AocPDv/fM3/xNH/DEnjj/AKHDw7/3zN/8TX3dRQB8I/8ADEnjj/ocPDv/AHzN/wDE0f8ADEnjj/ocPDv/AHzN/wDE193UUAfCP/DEnjj/AKHDw7/3zN/8TR/wxJ44/wChw8O/98zf/E193UUAfCP/AAxJ44/6HDw7/wB8zf8AxNH/AAxJ44/6HDw7/wB8zf8AxNfd1FAHwj/wxJ44/wChw8O/98zf/E0f8MSeOP8AocPDv/fM3/xNfd1FAHwj/wAMSeOP+hw8O/8AfM3/AMTR/wAMSeOP+hw8O/8AfM3/AMTX3dRQB8I/8MSeOP8AocPDv/fM3/xNH/DEnjj/AKHDw7/3zN/8TX3dRQB8I/8ADEnjj/ocPDv/AHzN/wDE0f8ADEnjj/ocPDv/AHzN/wDE193UUAfCP/DEnjj/AKHDw7/3zN/8TR/wxJ44/wChw8O/98zf/E193UUAfCP/AAxJ44/6HDw7/wB8zf8AxNH/AAxJ44/6HDw7/wB8zf8AxNfd1FAHwj/wxJ44/wChw8O/98zf/E0f8MSeOP8AocPDv/fM3/xNfd1FAHwj/wAMSeOP+hw8O/8AfM3/AMTR/wAMSeOP+hw8O/8AfM3/AMTX3dRQB8I/8MSeOP8AocPDv/fM3/xNH/DEnjj/AKHDw7/3zN/8TX3dRQB8I/8ADEnjj/ocPDv/AHzN/wDE0f8ADEnjj/ocPDv/AHzN/wDE193UUAfCP/DEnjj/AKHDw7/3zN/8TR/wxJ44/wChw8O/98zf/E193UUAfCP/AAxJ44/6HDw7/wB8zf8AxNH/AAxJ44/6HDw7/wB8zf8AxNfd1FAHwj/wxJ44/wChw8O/98zf/E0f8MSeOP8AocPDv/fM3/xNfd1FAHwj/wAMSeOP+hw8O/8AfM3/AMTR/wAMSeOP+hw8O/8AfM3/AMTX3dRQB8I/8MSeOP8AocPDv/fM3/xNH/DEnjj/AKHDw7/3zN/8TX3dRQB8I/8ADEnjj/ocPDv/AHzN/wDE0f8ADEnjj/ocPDv/AHzN/wDE193UUAfCP/DEnjj/AKHDw7/3zN/8TR/wxJ44/wChw8O/98zf/E193UUAfCP/AAxJ44/6HDw7/wB8zf8AxNH/AAxJ44/6HDw7/wB8zf8AxNfd1FAHwj/wxJ44/wChw8O/98zf/E0f8MSeOP8AocPDv/fM3/xNfd1FAH5XfHr4R6v8Ide0/SNY1Sx1CW+tTco9oHCqoYrg7gOeKK9k/wCCkv8AyUnwx/2B2/8ARz0UAJ/wTb/5KX4m/wCwOP8A0clfd1fCP/BNv/kpfib/ALA4/wDRyV93UAFFFFABRRRQAUUUUAFfG3xE/aQ+JGhePtf0Sw/sX7JYajPbQ+ZZszbEcgZO/k4FfZNfmn8Zf+SueL/+w1df+jWrajFNu5lVbS0PRf8AhqX4p/8AUB/8AW/+Lo/4al+Kf/UB/wDAFv8A4uvDqK39nHsYc8u57j/w1L8U/wDqA/8AgC3/AMXR/wANS/FP/qA/+ALf/F14dRR7OPYOeXc9x/4al+Kf/UB/8AW/+Lo/4al+Kf8A1Af/AABb/wCLrw6ij2cewc8u57j/AMNS/FP/AKgP/gC3/wAXR/w1L8U/+oD/AOALf/F14dRR7OPYOeXc9x/4al+Kf/UB/wDAFv8A4uj/AIal+Kf/AFAf/AFv/i68Ooo9nHsHPLue4/8ADUvxT/6gP/gC3/xdH/DUvxT/AOoD/wCALf8AxdeHUUezj2Dnl3Pcf+Gpfin/ANQH/wAAW/8Ai6P+Gpfin/1Af/AFv/i68Ooo9nHsHPLue4/8NS/FP/qA/wDgC3/xddF8Mv2jfiN4h+Ivh7QtR/sX7HqGow28/l2bK2xmAODvODXzZXZ/Az/ks3g7/sM23/oYpOEbbDU5X3P0looorjOsKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD4S/4KS/8AJSfDH/YHb/0c9FH/AAUl/wCSk+GP+wO3/o56KAE/4Jt/8lL8Tf8AYHH/AKOSvu6vhH/gm3/yUvxN/wBgcf8Ao5K+7qACiiigAooooAKKKKACvzT+Mv8AyVzxf/2Grr/0a1fpZX5p/GX/AJK54v8A+w1df+jWrehuzGtsjkzwM10F9pegadcmzvdS1I3KKpk8m0QoCVDYBLgnr6VzzfdP0rb8cf8AI0Xn0j/9FrXZGyi3Y4Kl3UUU7aP9P8xPJ8Lf9BHWP/AKP/45R5Phb/oI6x/4BR//ABysaijmXYfsn/O/w/yNnyfC3/QR1j/wCj/+OUeT4W/6COsf+AUf/wAcrGoo5l2D2T/nf4f5Gz5Phb/oI6x/4BR//HKPJ8Lf9BHWP/AKP/45WNRRzLsHsn/O/wAP8jaW38Ls4Ualq4ycf8eUf/xys/V7NtO1W7sGcSNbTNEWAwG2nGagh/1yf7w/nWp40/5G/V/+vyX/ANCNDs43sTFSjUUb3TT/AEMiiiioOgKKKKACuz+Bn/JZvB3/AGGbb/0MVxldn8DP+SzeDv8AsM23/oYpS2Y47o/SWiiiuA7QooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAPhL/gpL/yUnwx/2B2/9HPRR/wUl/5KT4Y/7A7f+jnooAT/AIJt/wDJS/E3/YHH/o5K+7q+Ef8Agm3/AMlL8Tf9gcf+jkr7uoAKKKKACiiigAooooAK/NP4y/8AJXPF/wD2Grr/ANGtX6WV+afxl/5K54v/AOw1df8Ao1q3obsxrbI5Jvun6Vt+OP8AkaLz6R/+i1rEb7p+lbfjj/kaLz6R/wDota7F8L+X6nDL+NH0f5xMWiiioNgooooAKKKKAHw/65P94fzrU8af8jfq/wD1+S/+hGsuH/XJ/vD+danjT/kb9X/6/Jf/AEI1S+FmL/jL0f5oyKKKKk2CiiigArs/gZ/yWbwd/wBhm2/9DFcZXZ/Az/ks3g7/ALDNt/6GKUtmOO6P0looorgO0KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD4S/4KS/8lJ8Mf9gdv/Rz0Uf8FJf+Sk+GP+wO3/o56KAE/wCCbf8AyUvxN/2Bx/6OSvu6vhH/AIJt/wDJS/E3/YHH/o5K+7qACiiigAooooAKKKKACvzT+Mv/ACVzxf8A9hq6/wDRrV+llfmn8Zf+SueL/wDsNXX/AKNat6G7Ma2yOSb7p+lbfjj/AJGi8+kf/otaxG+6fpW344/5Gi8+kf8A6LWuxfC/l+pwy/jR9H+cTFoooqDYKKKKACiiigB8P+uT/eH861PGn/I36v8A9fkv/oRrLh/1yf7w/nWp40/5G/V/+vyX/wBCNUvhZi/4y9H+aMiiiipNgooooAK7P4Gf8lm8Hf8AYZtv/QxXGV2fwM/5LN4O/wCwzbf+hilLZjjuj9JaKKK4DtCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+Ev+Ckv/JSfDH/YHb/0c9FH/BSX/kpPhj/sDt/6OeigBP8Agm3/AMlL8Tf9gcf+jkr7ur4R/wCCbf8AyUvxN/2Bx/6OSvu6gAooooAKKKKACiiigAr80/jL/wAlc8X/APYauv8A0a1fpZX5p/GX/krni/8A7DV1/wCjWrehuzGtsjkm+6fpW344/wCRovPpH/6LWsRvun6Vt+OP+RovPpH/AOi1rsXwv5fqcMv40fR/nExaKKKg2CiiigAooooAfD/rk/3h/OtTxp/yN+r/APX5L/6Eay4f9cn+8P51qeNP+Rv1f/r8l/8AQjVL4WYv+MvR/mjIoooqTYKKKKACuz+Bn/JZvB3/AGGbb/0MVxldn8DP+SzeDv8AsM23/oYpS2Y47o/SWiiiuA7QooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAPhL/gpL/yUnwx/2B2/9HPRR/wUl/5KT4Y/7A7f+jnooAT/AIJt/wDJS/E3/YHH/o5K+7q+Ef8Agm3/AMlL8Tf9gcf+jkr7uoAKKKKACiiigAooooAK/NP4y/8AJXPF/wD2Grr/ANGtX6WV+afxl/5K54v/AOw1df8Ao1q3obsxrbI5Jvun6Vt+OP8AkaLz6R/+i1rEb7p+lbfjj/kaLz6R/wDota7F8L+X6nDL+NH0f5xMWiiioNgooooAKKKKAHw/65P94fzrU8af8jfq/wD1+S/+hGsuH/XJ/vD+danjT/kb9X/6/Jf/AEI1S+FmL/jL0f5oyKKKKk2CiiigArs/gZ/yWbwd/wBhm2/9DFcZXZ/Az/ks3g7/ALDNt/6GKUtmOO6P0looorgO0KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD4S/4KS/8lJ8Mf9gdv/Rz0Uf8FJf+Sk+GP+wO3/o56KAE/wCCbf8AyUvxN/2Bx/6OSvu6vhH/AIJt/wDJS/E3/YHH/o5K+7qACiiigAooooAKKKKACvzT+Mv/ACVzxf8A9hq6/wDRrV+llfmn8Zf+SueL/wDsNXX/AKNat6G7Ma2yOTPIxW/eaxo9/Obq+0SZ7l1USNHfFFYhQuQNpx09awKK61Jo4504zab/ADa/I2ftvhz/AKAN3/4MT/8AEUfbfDn/AEAbv/wYn/4isainzv8ApIn2Ee7+9/5mz9t8Of8AQBu//Bif/iKPtvhz/oA3f/gxP/xFY1FHO/6SD2Ee7+9/5mz9t8Of9AG7/wDBif8A4ij7b4c/6AN3/wCDE/8AxFY1FHO/6SD2Ee7+9/5m0t94dVgw0C6yDnnUT/8AEVnarePqOp3V/Kqo9xK0rKvQFjnAqtRScm9BxpRi7r82/wAwoooqTUKKKKACuz+Bn/JZvB3/AGGbb/0MVxldn8DP+SzeDv8AsM23/oYpS2Y47o/SWiiiuA7QooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAPhL/gpL/yUnwx/2B2/9HPRR/wUl/5KT4Y/7A7f+jnooAT/AIJt/wDJS/E3/YHH/o5K+7q+Ef8Agm3/AMlL8Tf9gcf+jkr7uoAKKKKACiiigAooooAK/NP4y/8AJXPF/wD2Grr/ANGtX6WV+afxl/5K54v/AOw1df8Ao1q3obsxrbI5Oiiiuk5wooooAKKKKACiiigAooooAKKKKACiiigArs/gZ/yWbwd/2Gbb/wBDFcZXZ/Az/ks3g7/sM23/AKGKUtmOO6P0looorgO0KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD4S/4KS/8AJSfDH/YHb/0c9FH/AAUl/wCSk+GP+wO3/o56KAE/4Jt/8lL8Tf8AYHH/AKOSvu6vhH/gm3/yUvxN/wBgcf8Ao5K+7qACiiigAooooAKKKKACvzT+Mv8AyVzxf/2Grr/0a1fpZX5p/GX/AJK54v8A+w1df+jWrehuzGtsjk6KKK6TnCiiigAooooAKKKKACiiigAooooAKKKKACuz+Bn/ACWbwd/2Gbb/ANDFcZXZ/Az/AJLN4O/7DNt/6GKUtmOO6P0looorgO0KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD4S/wCCkv8AyUnwx/2B2/8ARz0Uf8FJf+Sk+GP+wO3/AKOeigBP+Cbf/JS/E3/YHH/o5K+7q+Ef+Cbf/JS/E3/YHH/o5K+7qACiiigAooooAKKKKACvzT+Mv/JXPF//AGGrr/0a1fpZX5p/GX/krni//sNXX/o1q3obsxrbI5OiijI9a6TnCijI9aMj1oAKKMj1oyPWgAooyPWjI9aACijI9aMj1oAKKMj1oyPWgAooyPWjI9aACuz+Bn/JZvB3/YZtv/QxXGV2fwM/5LN4O/7DNt/6GKUtmOO6P0looorgO0KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD4S/4KS/8lJ8Mf8AYHb/ANHPRR/wUl/5KT4Y/wCwO3/o56KAE/4Jt/8AJS/E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AGGrr/0a1fpZX5p/GX/krni//sNXX/o1q3obsxrbI5Oiiiuk5wooooAKKKKACiiigAooooAKKKKACiiigArs/gZ/yWbwd/2Gbb/0MVxldn8DP+SzeDv+wzbf+hilLZjjuj9JaKKK4DtCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+Ev+Ckv/JSfDH/AGB2/wDRz0Uf8FJf+Sk+GP8AsDt/6OeigBP+Cbf/ACUvxN/2Bx/6OSvu6vhH/gm3/wAlL8Tf9gcf+jkr7uoAKKKKACiiigAooooAK/NP4y/8lc8X/wDYauv/AEa1fpZX5p/GX/krni//ALDV1/6Nat6G7Ma2yOTooorpOcKKKKACiiigAooooAKKKKACiiigAooooAK7P4Gf8lm8Hf8AYZtv/QxXGV2fwM/5LN4O/wCwzbf+hilLZjjuj9JaKKK4DtCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+Ev+Ckv/JSfDH/YHb/0c9FH/BSX/kpPhj/sDt/6OeigBP8Agm3/AMlL8Tf9gcf+jkr7ur4R/wCCbf8AyUvxN/2Bx/6OSvu6gAooooAKKKKACiiigAr80/jL/wAlc8X/APYauv8A0a1fpZX5p/GX/krni/8A7DV1/wCjWrehuzGtsjk6KKK6TnCiiigAooooAKKKKACiiigAooooAKKKKACuz+Bn/JZvB3/YZtv/AEMVxldn8DP+SzeDv+wzbf8AoYpS2Y47o/SWiiiuA7QooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAPhL/gpL/wAlJ8Mf9gdv/Rz0Uf8ABSX/AJKT4Y/7A7f+jnooAT/gm3/yUvxN/wBgcf8Ao5K+7q+Ef+Cbf/JS/E3/AGBx/wCjkr7uoAKKKKACiiigAooooAK/NP4y/wDJXPF//Yauv/RrV+llfmn8Zf8Akrni/wD7DV1/6Nat6G7Ma2yOTqTym/vR/wDfYqOiuk5yTym/vR/99ijym/vR/wDfYqOigCTym/vR/wDfYo8pv70f/fYqOigCTym/vR/99ijym/vR/wDfYqOigCTym/vR/wDfYo8pv70f/fYqOigCTym/vR/99ijym/vR/wDfYqOigCTym/vR/wDfYo8pv70f/fYqOigArs/gZ/yWbwd/2Gbb/wBDFcZXZ/Az/ks3g7/sM23/AKGKUtmOO6P0looorgO0KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD4S/4KS/8AJSfDH/YHb/0c9FH/AAUl/wCSk+GP+wO3/o56KAE/4Jt/8lL8Tf8AYHH/AKOSvu6vhH/gm3/yUvxN/wBgcf8Ao5K+7qACiiigAooooAKKKKACvzT+Mv8AyVzxf/2Grr/0a1fpZX5p/GX/AJK54v8A+w1df+jWrehuzGtsjk6KKK6TnCiiigAooooAKKKKACiiigAooooAKKKKACuz+Bn/ACWbwd/2Gbb/ANDFcZXZ/Az/AJLN4O/7DNt/6GKUtmOO6P0looorgO0KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD4S/wCCkv8AyUnwx/2B2/8ARz0Uf8FJf+Sk+GP+wO3/AKOeigBP+Cbf/JS/E3/YHH/o5K+7q+Ef+Cbf/JS/E3/YHH/o5K+7qACiiigAooooAKKKKACvzT+Mv/JXPF//AGGrr/0a1fpZX5p/GX/krni//sNXX/o1q3obsxrbI5Oiiiuk5wooooAKKKKACiiigAooooAKKKKACiiigArs/gZ/yWbwd/2Gbb/0MVxldn8DP+SzeDv+wzbf+hilLZjjuj9JaKKK4DtCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+Ev+Ckv/JSfDH/AGB2/wDRz0Uf8FJf+Sk+GP8AsDt/6OeigBP+Cbf/ACUvxN/2Bx/6OSvu6vhH/gm3/wAlL8Tf9gcf+jkr7uoAKKKKACiiigAooooAK/NP4y/8lc8X/wDYauv/AEa1fpZX5p/GX/krni//ALDV1/6Nat6G7Ma2yOTooorpOcKKKKACiiigAooooAKKKKACiiigAooooAK7P4Gf8lm8Hf8AYZtv/QxXGV2fwM/5LN4O/wCwzbf+hilLZjjuj9JaKKK4DtCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+Ev+Ckv/JSfDH/YHb/0c9FH/BSX/kpPhj/sDt/6OeigBP8Agm3/AMlL8Tf9gcf+jkr7ur4R/wCCbf8AyUvxN/2Bx/6OSvu6gAooooAKKKKACiiigAr80/jL/wAlc8X/APYauv8A0a1fpZX5p/GX/krni/8A7DV1/wCjWrehuzGtsjk6KKK6TnCiiigAooooAKKKKACiiigAooooAKKKKACuz+Bn/JZvB3/YZtv/AEMVxldn8DP+SzeDv+wzbf8AoYpS2Y47o/SWiiiuA7QooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAPhL/gpL/wAlJ8Mf9gdv/Rz0Uf8ABSX/AJKT4Y/7A7f+jnooAT/gm3/yUvxN/wBgcf8Ao5K+7q+Ef+Cbf/JS/E3/AGBx/wCjkr7uoAKKKKACiiigAooooAK/NP4y/wDJXPF//Yauv/RrV+llfmn8Zf8Akrni/wD7DV1/6Nat6G7Ma2yOTqQJHj/XL/3yajorpOck2R/891/75NGyP/nuv/fJqOigCTZH/wA91/75NGyP/nuv/fJqOigCTZH/AM91/wC+TRsj/wCe6/8AfJqOigCTZH/z3X/vk0bI/wDnuv8A3yajooAk2R/891/75NGyP/nuv/fJqOigCTZH/wA91/75NGyP/nsv/fJqOigArs/gZ/yWbwd/2Gbb/wBDFcZXZ/Az/ks3g7/sM23/AKGKUtmOO6P0looorgO0KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD4S/4KS/8AJSfDH/YHb/0c9FH/AAUl/wCSk+GP+wO3/o56KAE/4Jt/8lL8Tf8AYHH/AKOSvu6vhH/gm3/yUvxN/wBgcf8Ao5K+7qACiiigAooooAKKKKACvzT+Mv8AyVzxf/2Grr/0a1fpZX5p/GX/AJK54v8A+w1df+jWrehuzGtsjk6KKK6TnCiiigAooooAKKKKACiiigAooooAKKKKACuz+Bn/ACWbwd/2Gbb/ANDFcZXZ/Az/AJLN4O/7DNt/6GKUtmOO6P0looorgO0KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD4S/wCCkv8AyUnwx/2B2/8ARz0Uf8FJf+Sk+GP+wO3/AKOeigBP+Cbf/JS/E3/YHH/o5K+7q+Ef+Cbf/JS/E3/YHH/o5K+7qACiiigAooooAKKKKACvzT+Mv/JXPF//AGGrr/0a1fpZX5p/GX/krni//sNXX/o1q3obsxrbI5Oiiiuk5wooooAKKKKACiiigAooooAKKKKACiiigArs/gZ/yWbwd/2Gbb/0MVxldn8DP+SzeDv+wzbf+hilLZjjuj9JaKKK4DtCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+Ev+Ckv/JSfDH/AGB2/wDRz0Uf8FJf+Sk+GP8AsDt/6OeigBP+Cbf/ACUvxN/2Bx/6OSvu6vhH/gm3/wAlL8Tf9gcf+jkr7uoAKKKKACiiigAooooAK/NP4y/8lc8X/wDYauv/AEa1fpZX5p/GX/krni//ALDV1/6Nat6G7Ma2yOTooorpOcKKKKACiiigAooooAKKKKACiiigAooooAK7P4Gf8lm8Hf8AYZtv/QxXGV2fwM/5LN4O/wCwzbf+hilLZjjuj9JaKKK4DtCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+Ev+Ckv/JSfDH/YHb/0c9FH/BSX/kpPhj/sDt/6OeigBP8Agm3/AMlL8Tf9gcf+jkr7ur4R/wCCbf8AyUvxN/2Bx/6OSvu6gAooooAKKKKACiiigAr80/jL/wAlc8X/APYauv8A0a1fpZX5p/GX/krni/8A7DV1/wCjWrehuzGtsjk6KKK6TnCiiigAooooAKKKKACiiigAooooAKKKKACuz+Bn/JZvB3/YZtv/AEMVxldn8DP+SzeDv+wzbf8AoYpS2Y47o/SWiiiuA7QooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAPhL/gpL/wAlJ8Mf9gdv/Rz0Uf8ABSX/AJKT4Y/7A7f+jnooAT/gm3/yUvxN/wBgcf8Ao5K+7q+Ef+Cbf/JS/E3/AGBx/wCjkr7uoAKKKKACiiigAooooAK/NP4y/wDJXPF//Yauv/RrV+llfmn8Zf8Akrni/wD7DV1/6Nat6G7Ma2yOTooorpOcKKKKACiiigAooooAKKKKACiiigAooooAK7P4Gf8AJZvB3/YZtv8A0MVxldn8DP8Aks3g7/sM23/oYpS2Y47o/SWiiiuA7QooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAPhL/AIKS/wDJSfDH/YHb/wBHPRR/wUl/5KT4Y/7A7f8Ao56KAE/4Jt/8lL8Tf9gcf+jkr7ur4R/4Jt/8lL8Tf9gcf+jkr7uoAKKKKACiiigAooooAK/NP4y/8lc8X/8AYauv/RrV+llfmn8Zf+SueL/+w1df+jWrehuzGtsjk6KKK6TnCiiigAooooAKKKKACiiigAooooAKKKKACuz+Bn/JZvB3/YZtv/QxXGV2fwM/5LN4O/7DNt/6GKUtmOO6P0looorgO0KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD4S/4KS/8lJ8Mf8AYHb/ANHPRR/wUl/5KT4Y/wCwO3/o56KAE/4Jt/8AJS/E3/YHH/o5K+7q+Ef+Cbf/ACUvxN/2Bx/6OSvu6gAooooAKKKKACiiigAr80/jL/yVzxf/ANhq6/8ARrV+llfmn8Zf+SueL/8AsNXX/o1q3obsxrbI5Oiiiuk5wooooAKKKKACiiigAooooAKKKKACiiigArs/gZ/yWbwd/wBhm2/9DFcZXZ/Az/ks3g7/ALDNt/6GKUtmOO6P0looorgO0KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD4S/4KS/8lJ8Mf9gdv/Rz0Uf8FJf+Sk+GP+wO3/o56KAE/wCCbf8AyUvxN/2Bx/6OSvu6vhH/AIJt/wDJS/E3/YHH/o5K+7qACiiigAooooAKKKKACvzT+Mv/ACVzxf8A9hq6/wDRrV+llfmn8Zf+SueL/wDsNXX/AKNat6G7Ma2yOTooorpOcKKKKACiiigAooooAKKKKACiiigAooooAK7P4Gf8lm8Hf9hm2/8AQxXGV2fwM/5LN4O/7DNt/wChilLZjjuj9JaKKK4DtCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+Ev+Ckv/ACUnwx/2B2/9HPRR/wAFJf8AkpPhj/sDt/6OeigBP+Cbf/JS/E3/AGBx/wCjkr7ur4R/4Jt/8lL8Tf8AYHH/AKOSvu6gAooooAKKKKACiiigAr80/jL/AMlc8X/9hq6/9GtX6WV+afxl/wCSueL/APsNXX/o1q3obsxrbI5Oiiiuk5wooooAKKKKACiiigAooooAKKKKACiiigArs/gZ/wAlm8Hf9hm2/wDQxXGV2fwM/wCSzeDv+wzbf+hilLZjjuj9JaKKK4DtCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+Ev8AgpL/AMlJ8Mf9gdv/AEc9FH/BSX/kpPhj/sDt/wCjnooAT/gm3/yUvxN/2Bx/6OSvu6vhH/gm3/yUvxN/2Bx/6OSvu6gAooooAKKKKACiiigAr80/jL/yVzxf/wBhq6/9GtX6WV+afxl/5K54v/7DV1/6Nat6G7Ma2yOTooorpOcKKKKACiiigAooooAKKKKACiiigAooooAK7P4Gf8lm8Hf9hm2/9DFcZXZ/Az/ks3g7/sM23/oYpS2Y47o/SWiiiuA7QooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAPhL/gpL/yUnwx/wBgdv8A0c9FH/BSX/kpPhj/ALA7f+jnooAT/gm3/wAlL8Tf9gcf+jkr7ur4R/4Jt/8AJS/E3/YHH/o5K+7qACiiigAooooAKKKKACvzT+Mv/JXPF/8A2Grr/wBGtX6WV+afxl/5K54v/wCw1df+jWrehuzGtsjk6KKK6TnCiiigAooooAKKKKACiiigAooooAKKKKACuz+Bn/JZvB3/AGGbb/0MVxldn8DP+SzeDv8AsM23/oYpS2Y47o/SWiiiuA7QooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAPhL/gpL/yUnwx/2B2/9HPRR/wUl/5KT4Y/7A7f+jnooAT/AIJt/wDJS/E3/YHH/o5K+7q+Ef8Agm3/AMlL8Tf9gcf+jkr7uoAKKKKACiiigAooooAK/NP4y/8AJXPF/wD2Grr/ANGtX6WV+afxl/5K54v/AOw1df8Ao1q3obsxrbI5Oiiiuk5wooooAKKKKACiiigAooooAKKKKACiiigArs/gZ/yWbwd/2Gbb/wBDFcZXZ/Az/ks3g7/sM23/AKGKUtmOO6P0looorgO0KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD4S/4KS/8AJSfDH/YHb/0c9FH/AAUl/wCSk+GP+wO3/o56KAE/4Jt/8lL8Tf8AYHH/AKOSvu6vhH/gm3/yUvxN/wBgcf8Ao5K+7qACiiigAooooAKKKKACvzT+Mv8AyVzxf/2Grr/0a1fpZX5p/GX/AJK54v8A+w1df+jWrehuzGtsjk6KKK6TnCiiigAooooAKKKKACiiigAooooAKKKKACuz+Bn/ACWbwd/2Gbb/ANDFcZXZ/Az/AJLN4O/7DNt/6GKUtmOO6P0looorgO0KKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigD4S/wCCkv8AyUnwx/2B2/8ARz0Uf8FJf+Sk+GP+wO3/AKOeigBP+Cbf/JS/E3/YHH/o5K+7q+Ef+Cbf/JS/E3/YHH/o5K+7qACiiigAooooAKKKKACvzT+Mv/JXPF//AGGrr/0a1fpZX5p/GX/krni//sNXX/o1q3obsxrbI5Oiiiuk5wooooAKKKKACiiigAooooAKKKKACiiigArs/gZ/yWbwd/2Gbb/0MVxldn8DP+SzeDv+wzbf+hilLZjjuj9JaKKK4DtCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+Ev+Ckv/JSfDH/AGB2/wDRz0Uf8FJf+Sk+GP8AsDt/6OeigBP+Cbf/ACUvxN/2Bx/6OSvu6vhH/gm3/wAlL8Tf9gcf+jkr7uoAKKKKACiiigAooooAK/NP4y/8lc8X/wDYauv/AEa1fpZX5p/GX/krni//ALDV1/6Nat6G7Ma2yOTooorpOcKKKKACiiigAooooAKKKKACiiigAooooAK7P4Gf8lm8Hf8AYZtv/QxXGV2fwM/5LN4O/wCwzbf+hilLZjjuj9JaKKK4DtCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooA+Ev+Ckv/JSfDH/YHb/0c9FH/BSX/kpPhj/sDt/6OeigBP8Agm3/AMlL8Tf9gcf+jkr7ur4R/wCCbf8AyUvxN/2Bx/6OSvu6gAooooAKKKKACiiigAr80/jL/wAlc8X/APYauv8A0a1fpZX5p/GX/krni/8A7DV1/wCjWrehuzGtsjk6KKK6TnCiiigAooooAKKKKACiiigAooooAKKKKACuz+Bn/JZvB3/YZtv/AEMVxldn8DP+SzeDv+wzbf8AoYpS2Y47o/SWiiiuA7QooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAPhL/gpL/wAlJ8Mf9gdv/Rz0Uf8ABSX/AJKT4Y/7A7f+jnooAT/gm3/yUvxN/wBgcf8Ao5K+7q+Ef+Cbf/JS/E3/AGBx/wCjkr7uoAKKKKACiiigAooooAK/NP4y/wDJXPF//Yauv/RrV+llfmn8Zf8Akrni/wD7DV1/6Nat6G7Ma2yOTooorpOcKKKKACiiigAooooAKKKKACiiigAooooAK7P4Gf8AJZvB3/YZtv8A0MVxldn8DP8Aks3g7/sM23/oYpS2Y47o/SWiiiuA7QooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAPhL/AIKS/wDJSfDH/YHb/wBHPRR/wUl/5KT4Y/7A7f8Ao56KAE/4Jt/8lL8Tf9gcf+jkr7ur4R/4Jt/8lL8Tf9gcf+jkr7uoAKKKKACiiigAooooAK+XPG/7LOreIvGWta/F4wsbdNRvprpYms2YoHcttJ3c4zX1HRVRk47EyipbnyH/AMMg61/0O2n/APgC/wD8XR/wyDrX/Q7af/4Av/8AF19eUVXtZk+yifIf/DIOtf8AQ7af/wCAL/8AxdH/AAyDrX/Q7af/AOAL/wDxdfXlFHtZh7KJ8h/8Mg61/wBDtp//AIAv/wDF0f8ADIOtf9Dtp/8A4Av/APF19eUUe1mHsonyH/wyDrX/AEO2n/8AgC//AMXR/wAMg61/0O2n/wDgC/8A8XX15RR7WYeyifIf/DIOtf8AQ7af/wCAL/8AxdH/AAyDrX/Q7af/AOAL/wDxdfXlFHtZh7KJ8h/8Mg61/wBDtp//AIAv/wDF0f8ADIOtf9Dtp/8A4Av/APF19eUUe1mHsonyH/wyDrX/AEO2n/8AgC//AMXR/wAMg61/0O2n/wDgC/8A8XX15RR7WYeyifIf/DIOtf8AQ7af/wCAL/8AxdbngD9l3VvDPjjRPEUvi6yuY9NvorpoVs2UuEYHAO7jNfUFFHtZB7OIUUUVmaBRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAfCX/BSX/kpPhj/sDt/6Oeij/gpL/wAlJ8Mf9gdv/Rz0UAeDfCn4l+LPhjq13qnhG7gtrm7g+zzNLbrKCm4NgBhxyBXo3/DWvxq/6Dem/wDgti/woooAP+GtfjV/0G9N/wDBbF/hR/w1r8av+g3pv/gti/woooAP+GtfjV/0G9N/8FsX+FH/AA1r8av+g3pv/gti/wAKKKAD/hrX41f9BvTf/BbF/hR/w1r8av8AoN6b/wCC2L/CiigA/wCGtfjV/wBBvTf/AAWxf4Uf8Na/Gr/oN6b/AOC2L/CiigA/4a1+NX/Qb03/AMFsX+FH/DWvxq/6Dem/+C2L/CiigA/4a1+NX/Qb03/wWxf4Uf8ADWvxq/6Dem/+C2L/AAoooAP+GtfjV/0G9N/8FsX+FH/DWvxq/wCg3pv/AILYv8KKKAD/AIa1+NX/AEG9N/8ABbF/hR/w1r8av+g3pv8A4LYv8KKKAD/hrX41f9BvTf8AwWxf4Uf8Na/Gr/oN6b/4LYv8KKKAD/hrX41f9BvTf/BbF/hR/wANa/Gr/oN6b/4LYv8ACiigA/4a1+NX/Qb03/wWxf4Uf8Na/Gr/AKDem/8Agti/woooAP8AhrX41f8AQb03/wAFsX+FH/DWvxq/6Dem/wDgti/woooAP+GtfjV/0G9N/wDBbF/hR/w1r8av+g3pv/gti/woooAP+GtfjV/0G9N/8FsX+FH/AA1r8av+g3pv/gti/wAKKKAD/hrX41f9BvTf/BbF/hR/w1r8av8AoN6b/wCC2L/CiigA/wCGtfjV/wBBvTf/AAWxf4Uf8Na/Gr/oN6b/AOC2L/CiigA/4a1+NX/Qb03/AMFsX+FH/DWvxq/6Dem/+C2L/CiigA/4a1+NX/Qb03/wWxf4Uf8ADWvxq/6Dem/+C2L/AAoooAP+GtfjV/0G9N/8FsX+FH/DWvxq/wCg3pv/AILYv8KKKAD/AIa1+NX/AEG9N/8ABbF/hR/w1r8av+g3pv8A4LYv8KKKAD/hrX41f9BvTf8AwWxf4Uf8Na/Gr/oN6b/4LYv8KKKAD/hrX41f9BvTf/BbF/hR/wANa/Gr/oN6b/4LYv8ACiigA/4a1+NX/Qb03/wWxf4Uf8Na/Gr/AKDem/8Agti/woooAP8AhrX41f8AQb03/wAFsX+FH/DWvxq/6Dem/wDgti/woooAP+GtfjV/0G9N/wDBbF/hR/w1r8av+g3pv/gti/woooAP+GtfjV/0G9N/8FsX+FH/AA1r8av+g3pv/gti/wAKKKAD/hrX41f9BvTf/BbF/hR/w1r8av8AoN6b/wCC2L/CiigA/wCGtfjV/wBBvTf/AAWxf4Uf8Na/Gr/oN6b/AOC2L/CiigA/4a1+NX/Qb03/AMFsX+FH/DWvxq/6Dem/+C2L/CiigA/4a1+NX/Qb03/wWxf4Uf8ADWvxq/6Dem/+C2L/AAoooAP+GtfjV/0G9N/8FsX+FH/DWvxq/wCg3pv/AILYv8KKKAD/AIa1+NX/AEG9N/8ABbF/hR/w1r8av+g3pv8A4LYv8KKKAD/hrX41f9BvTf8AwWxf4Uf8Na/Gr/oN6b/4LYv8KKKAD/hrX41f9BvTf/BbF/hR/wANa/Gr/oN6b/4LYv8ACiigA/4a1+NX/Qb03/wWxf4Uf8Na/Gr/AKDem/8Agti/woooAP8AhrX41f8AQb03/wAFsX+FH/DWvxq/6Dem/wDgti/woooA85+K3xM8WfE7VbTU/F13Bc3NpAYIWit1iATcWwQo55JooooA/9k=" alt="Phonlaphat Suwannakhot">
+        <div class="b-name">Phonlaphat<br>Suwannakhot</div>
+        <div class="b-role">Head of Equipment Dept. · Producer Team</div>
+        <div class="b-id">CREW ID · SIHNSART SHOW 18</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="about-sec">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>About Me</h2><span class="rule"></span></div>
+    <p>
+      I am an English major student at Mae Fah Luang University with experience in event
+      organization, graphic design, and student activities. Through my work with the Liberal
+      Arts Students Association, I have led different teams, designed posters, organized events,
+      and worked closely with others to make each project successful. I enjoy learning new
+      things, working with people, and taking on new challenges. I am looking forward to
+      gaining more experience and developing my skills through an internship.
+    </p>
+    <div class="about-tags">
+      <span class="tag">Graphic Design</span>
+      <span class="tag">Poster Design</span>
+      <span class="tag">Event Planning</span>
+      <span class="tag">Event Decoration</span>
+      <span class="tag">Team Leadership</span>
+      <span class="tag">Film Editing</span>
+      <span class="tag">Sound Design</span>
+      <span class="tag">After Effects</span>
+      <span class="tag">Content Creation</span>
+      <span class="tag">English Communication</span>
+      <span class="tag">Microsoft Office</span>
+    </div>
+  </div>
+</section>
+
+<section class="exp-sec">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Experience</h2><span class="rule"></span></div>
+    <div class="callsheet">
+
+      <div class="cs-row">
+        <div class="cs-date">2024–Present</div>
+        <div>
+          <p class="cs-role">Head of Welfare Department</p>
+          <p class="cs-org">Liberal Arts Students Association, Mae Fah Luang University</p>
+          <ul>
+            <li>Lead the Welfare Department during School and university activities</li>
+            <li>Coordinate student services and support during events</li>
+            <li>Work with other departments to ensure activities run smoothly</li>
+            <li>Help solve problems and assist students throughout events</li>
+          </ul>
+        </div>
+        <div></div>
+      </div>
+
+      <div class="cs-row">
+        <div class="cs-date">2022–2024</div>
+        <div>
+          <p class="cs-role">Head of Art Department</p>
+          <p class="cs-org">Liberal Arts Students Association, Mae Fah Luang University</p>
+          <ul>
+            <li>Led the Art Department for School activities</li>
+            <li>Designed posters for events and promotional materials</li>
+            <li>Planned venue decorations and activity spaces</li>
+          </ul>
+          <a class="cs-link" href="https://www.instagram.com/liberalarts.sa.mfu_official" target="_blank" rel="noopener">Instagram: @liberalarts.sa.mfu_official ↗</a>
+        </div>
+        <div></div>
+      </div>
+
+      <div class="cs-row">
+        <div class="cs-date">2026</div>
+        <div>
+          <p class="cs-role">Head of Equipment Department</p>
+          <p class="cs-org">Producer Team, Sihnsart Show 18: "Gothel: The Other Side of the Tower"</p>
+          <ul>
+            <li>Led the Equipment Department throughout the project</li>
+            <li>Prepared equipment and materials for props and stage production</li>
+            <li>Led the venue decoration team and helped repair stage sets</li>
+            <li>Designed the official poster for Sihnsart Show 18</li>
+          </ul>
+          <a class="cs-link" href="https://www.instagram.com/sihnsartshow.la.mfu" target="_blank" rel="noopener">Instagram: @sihnsartshow.la.mfu ↗</a>
+        </div>
+        <div></div>
+      </div>
+
+      <div class="cs-row">
+        <div class="cs-date">2025</div>
+        <div>
+          <p class="cs-role">Grand Opening Event Organizer</p>
+          <p class="cs-org">Progressive Mae Sai Project</p>
+          <ul>
+            <li>Helped organize the grand opening event and tested the AR tourist route</li>
+            <li>Assisted visitors in using the AR experience</li>
+            <li>Created promotional content for the Cultural Sunday Market (Kad Kom)</li>
+          </ul>
+          <a class="cs-link" href="https://www.facebook.com/share/1By3dgu9Fs/" target="_blank" rel="noopener">View Post ↗</a>
+        </div>
+        <div></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="pinboard-sec" id="portfolio">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Design Portfolio</h2><span class="rule"></span></div>
+    <div class="pin-grid">
+
+      <div class="pin-card">
+        <div class="pin-tape"></div>
+        <div class="pin-thumb" style="background:linear-gradient(135deg,#e2a63d,#0b1526);">
+          COLLIDE<br>(2026)
+        </div>
+        <div class="pin-body">
+          <div class="pin-year">2026</div>
+          <p class="pin-title">COLLIDE — Short Film</p>
+          <p class="pin-desc">Winner, Best Short Film. Worked as Film Editor and Sound Designer on the project.</p>
+          <div class="pin-links">
+            <a class="pin-link" href="https://www.instagram.com/reel/DXixlkAiRPp/?igsh=d2ZmbWR0emh4Zjl3" target="_blank" rel="noopener">Watch Film</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pin-card">
+        <div class="pin-tape"></div>
+        <div class="pin-thumb" style="background:linear-gradient(135deg,#2c9c93,#12203a);">
+          AFTER EFFECTS<br>SHOWREEL
+        </div>
+        <div class="pin-body">
+          <div class="pin-year">2026</div>
+          <p class="pin-title">Motion &amp; VFX Reel</p>
+          <p class="pin-desc">Hands-on experience creating effects and motion graphics in Adobe After Effects.</p>
+          <div class="pin-links">
+            <a class="pin-link" href="https://www.instagram.com/reel/DU2IVgPErLb/?igsh=cDZrMXpxdG1oNmds" target="_blank" rel="noopener">Watch Reel</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pin-card">
+        <div class="pin-tape"></div>
+        <div class="pin-thumb" style="background:linear-gradient(135deg,#2c9c93,#12203a);">
+          SIHNSART<br>SHOW 18
+        </div>
+        <div class="pin-body">
+          <div class="pin-year">2026</div>
+          <p class="pin-title">Sihnsart Show 18</p>
+          <p class="pin-desc">Equipment &amp; decoration team leader, prepared equipment and materials, helped repair stage sets, and designed the official poster.</p>
+          <div class="pin-links">
+            <a class="pin-link" href="https://www.facebook.com/share/p/1EGygJqBju/" target="_blank" rel="noopener">View Event</a>
+            <a class="pin-link" href="https://www.facebook.com/share/p/1BRb52BoKq/" target="_blank" rel="noopener">View Poster</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pin-card">
+        <div class="pin-tape"></div>
+        <div class="pin-thumb" style="background:linear-gradient(135deg,#e2a63d,#12203a);">
+          LA-BYE
+        </div>
+        <div class="pin-body">
+          <div class="pin-year">2026</div>
+          <p class="pin-title">LA-BYE</p>
+          <p class="pin-desc">Designed the activity rooms and event activities.</p>
+          <div class="pin-links">
+            <a class="pin-link" href="https://www.facebook.com/share/p/14jkWhGNUCX/" target="_blank" rel="noopener">View Project</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pin-card">
+        <div class="pin-tape"></div>
+        <div class="pin-thumb" style="background:linear-gradient(135deg,#4a4436,#12203a);">
+          PROGRESSIVE<br>MAE SAI
+        </div>
+        <div class="pin-body">
+          <div class="pin-year">2025</div>
+          <p class="pin-title">Progressive Mae Sai Project</p>
+          <p class="pin-desc">Grand opening event organizer, tested the AR tourist route, created promo content for the Kad Kom market.</p>
+          <div class="pin-links">
+            <a class="pin-link" href="https://www.facebook.com/share/1By3dgu9Fs/" target="_blank" rel="noopener">View Post</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pin-card">
+        <div class="pin-tape"></div>
+        <div class="pin-thumb" style="background:linear-gradient(135deg,#e2a63d,#2c9c93);">
+          "KRA SUE"<br>AR EFFECT
+        </div>
+        <div class="pin-body">
+          <div class="pin-year">2022</div>
+          <p class="pin-title">TikTok Effect House — 1st Place (Thailand)</p>
+          <p class="pin-desc">"Kra Sue" AR Effect, winner of the national TikTok Effect House competition.</p>
+          <div class="pin-links">
+            <a class="pin-link" href="https://vt.tiktok.com/ZSXSKcKHH/" target="_blank" rel="noopener">View Effect</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="pin-card">
+        <div class="pin-tape"></div>
+        <div class="pin-thumb" style="background:linear-gradient(135deg,#12203a,#2c9c93); font-size:12px;">
+          + MORE WORK<br>COMING SOON
+        </div>
+        <div class="pin-body">
+          <div class="pin-year">soon</div>
+          <p class="pin-title">More projects on the way</p>
+          <p class="pin-desc">Send over any additional links or files and a new card goes right up on this board.</p>
+          <div class="pin-links">
+            <a class="pin-link" href="#contact">Get In Touch</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="award-sec">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Honors &amp; Awards</h2><span class="rule"></span></div>
+    <div class="award-grid">
+      <div class="award-card">
+        <div class="award-ribbon">🎬</div>
+        <div>
+          <p class="award-title">Best Short Film — COLLIDE (2026)</p>
+          <p class="award-sub">Film Editing &amp; Sound Design</p>
+          <a class="cs-link" href="https://www.instagram.com/reel/DXixlkAiRPp/?igsh=d2ZmbWR0emh4Zjl3" target="_blank" rel="noopener">Watch Film ↗</a>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-ribbon">🏆</div>
+        <div>
+          <p class="award-title">1st Place Winner (Thailand) — TikTok Effect House</p>
+          <p class="award-sub">"Kra Sue" AR Effect · National Competition · 2022</p>
+          <a class="cs-link" href="https://vt.tiktok.com/ZSXSKcKHH/" target="_blank" rel="noopener">View Effect ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap foot-grid">
+    <div class="foot-contact">
+      <h3>CONTACT</h3>
+      <ul>
+        <li>☎️ <a href="tel:+66858579343">+66 85 857 9343</a></li>
+        <li>✉️ <a href="mailto:Phonlaphatsuwannakhot@gmail.com">Phonlaphatsuwannakhot@gmail.com</a></li>
+        <li>📍 235 Moo 4, Khok Sung, Khok Sung, Sa Kaeo 27120</li>
+        <li>🎓 Bachelor of Arts in English, Mae Fah Luang University · GPA 3.35 · Expected Graduation June 2027</li>
+      </ul>
+    </div>
+    <div class="stamp">
+      AVAILABLE FOR<br>INTERNSHIP
+      <small>4 JAN — 23 APR 2027</small>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© Phonlaphat Suwannakhot</span>
+    <span>Marketing Administrator Portfolio</span>
+  </div>
+</footer>
+
+</body>
+</html>
