@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phonlaphat Suwannakhot — Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fff6f0;
+    --card:#ffffff;
+    --pink:#ff6fa0;
+    --pink-soft:#ffdcea;
+    --purple:#9b7bff;
+    --purple-soft:#eae2ff;
+    --mint:#2fdcb8;
+    --mint-soft:#d4fff2;
+    --yellow:#ffd23f;
+    --yellow-soft:#fff2cc;
+    --sky:#4fc3ff;
+    --sky-soft:#dcf3ff;
+    --ink:#241735;
+    --ink-soft:#6e6485;
+    --line:rgba(36,23,53,0.08);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,.display{font-family:'Fredoka',sans-serif;}
+  a{color:inherit;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+  ::selection{background:var(--pink);color:#fff;}
+
+  /* blob background decorations */
+  .blob{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(50px);
+    opacity:0.55;
+    z-index:0;
+    pointer-events:none;
+  }
+
+  /* ---------- MARQUEE ---------- */
+  .marquee-strip{
+    background:linear-gradient(90deg,var(--pink),var(--purple));
+    color:#fff;
+    overflow:hidden;
+    white-space:nowrap;
+    position:relative;
+    z-index:2;
+  }
+  .marquee-track{
+    display:inline-block;
+    padding:9px 0;
+    font-family:'Fredoka',sans-serif;
+    font-weight:600;
+    font-size:13.5px;
+    letter-spacing:0.03em;
+    animation: scroll-left 24s linear infinite;
+  }
+  .marquee-track span{margin:0 20px;}
+  @keyframes scroll-left{0%{transform:translateX(0);}100%{transform:translateX(-50%);}}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    padding:56px 0 70px;
+    overflow:hidden;
+  }
+  .hero .blob-1{width:320px;height:320px;background:var(--pink-soft);top:-80px;right:-80px;}
+  .hero .blob-2{width:260px;height:260px;background:var(--mint-soft);bottom:-60px;left:-60px;}
+  .hero-grid{
+    position:relative;z-index:2;
+    display:grid;
+    grid-template-columns: 1.25fr 0.9fr;
+    gap:36px;
+    align-items:center;
+  }
+  .eyebrow{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-family:'Fredoka',sans-serif;
+    font-weight:600;
+    font-size:12.5px;
+    background:var(--ink);
+    color:#fff;
+    padding:7px 16px;
+    border-radius:30px;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-size:clamp(40px,7vw,68px);
+    font-weight:700;
+    line-height:1.02;
+    margin:0 0 10px;
+  }
+  .hero h1 .hl{
+    background:linear-gradient(100deg,var(--pink),var(--purple));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+  }
+  .role-chip{
+    display:inline-block;
+    font-family:'Fredoka',sans-serif;
+    font-weight:600;
+    font-size:14px;
+    background:var(--purple-soft);
+    color:var(--purple);
+    padding:6px 16px;
+    border-radius:20px;
+    margin-bottom:8px;
+  }
+  .edu-block{
+    list-style:none;
+    margin:0 0 26px;
+    padding:0;
+    max-width:480px;
+  }
+  .edu-block li{
+    font-size:14px;
+    line-height:1.6;
+    color:var(--ink-soft);
+    padding-left:18px;
+    position:relative;
+    margin-bottom:6px;
+  }
+  .edu-block li::before{
+    content:'';
+    position:absolute;
+    left:0;top:8px;
+    width:7px;height:7px;
+    border-radius:50%;
+    background:var(--pink);
+  }
+  .edu-block li:nth-child(2)::before{background:var(--purple);}
+  .edu-block li:nth-child(3)::before{background:var(--mint);}
+  .edu-block li:nth-child(4)::before{background:var(--yellow);}
+  .hero p.lede{
+    font-size:16px;
+    line-height:1.75;
+    color:var(--ink-soft);
+    max-width:520px;
+    margin:0 0 28px;
+  }
+  .hero-cta{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{
+    font-family:'Fredoka',sans-serif;
+    font-weight:600;
+    font-size:14.5px;
+    padding:13px 26px;
+    border-radius:40px;
+    text-decoration:none;
+    display:inline-block;
+    transition:transform .18s ease, box-shadow .18s ease;
+    border:2px solid transparent;
+  }
+  .btn-primary{
+    background:linear-gradient(100deg,var(--pink),var(--purple));
+    color:#fff;
+    box-shadow:0 10px 24px rgba(255,111,160,0.35);
+  }
+  .btn-primary:hover{transform:translateY(-3px) scale(1.02);box-shadow:0 14px 28px rgba(255,111,160,0.45);}
+  .btn-ghost{border-color:var(--ink);color:var(--ink);}
+  .btn-ghost:hover{transform:translateY(-3px);background:var(--ink);color:#fff;}
+
+  /* photo blob */
+  .badge-wrap{display:flex;justify-content:center;position:relative;}
+  .photo-blob{
+    position:relative;
+    width:260px;
+  }
+  .photo-blob img{
+    width:100%;
+    aspect-ratio:1/1.05;
+    object-fit:cover;
+    border-radius:44% 56% 62% 38% / 48% 42% 58% 52%;
+    border:6px solid #fff;
+    box-shadow:0 24px 50px rgba(155,123,255,0.35);
+    display:block;
+  }
+  .sticker{
+    position:absolute;
+    font-family:'Fredoka',sans-serif;
+    font-weight:700;
+    font-size:12.5px;
+    background:var(--yellow);
+    color:var(--ink);
+    padding:8px 14px;
+    border-radius:30px;
+    box-shadow:0 8px 16px rgba(0,0,0,0.15);
+    border:2.5px solid #fff;
+    transform:rotate(-8deg);
+  }
+  .sticker.s1{top:-8px;right:-14px;}
+  .sticker.s2{
+    bottom:6px;left:-24px;
+    background:var(--mint);
+    transform:rotate(6deg);
+  }
+
+  /* ---------- SECTION HEADERS ---------- */
+  section{padding:56px 0;position:relative;}
+  .sec-head{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:30px;
+  }
+  .sec-num{
+    font-family:'Fredoka',sans-serif;
+    font-weight:700;
+    font-size:14px;
+    background:var(--ink);
+    color:#fff;
+    width:34px;height:34px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    flex-shrink:0;
+  }
+  .sec-head h2{
+    font-size:26px;
+    font-weight:700;
+    margin:0;
+  }
+
+  /* ---------- ABOUT ---------- */
+  .about-card{
+    background:var(--card);
+    border-radius:28px;
+    padding:30px;
+    box-shadow:0 10px 30px rgba(36,23,53,0.06);
+  }
+  .about-card p{
+    font-size:16px;
+    line-height:1.85;
+    color:var(--ink-soft);
+    margin:0;
+  }
+  .about-tags{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px;}
+  .tag{
+    font-family:'Fredoka',sans-serif;
+    font-size:12.5px;
+    font-weight:600;
+    padding:7px 15px;
+    border-radius:20px;
+  }
+  .tag:nth-child(6n+1){background:var(--pink-soft);color:var(--pink);}
+  .tag:nth-child(6n+2){background:var(--purple-soft);color:var(--purple);}
+  .tag:nth-child(6n+3){background:var(--mint-soft);color:#0f9d7f;}
+  .tag:nth-child(6n+4){background:var(--yellow-soft);color:#a67c00;}
+  .tag:nth-child(6n+5){background:var(--sky-soft);color:#0d84c4;}
+  .tag:nth-child(6n+6){background:var(--pink-soft);color:var(--pink);}
+
+  /* ---------- EXPERIENCE TIMELINE ---------- */
+  .timeline{position:relative;padding-left:26px;}
+  .timeline::before{
+    content:'';
+    position:absolute;left:7px;top:6px;bottom:6px;
+    width:3px;
+    background:linear-gradient(var(--pink),var(--purple),var(--mint));
+    border-radius:4px;
+  }
+  .tl-item{position:relative;padding-bottom:34px;}
+  .tl-item:last-child{padding-bottom:0;}
+  .tl-dot{
+    position:absolute;left:-26px;top:4px;
+    width:17px;height:17px;
+    border-radius:50%;
+    background:#fff;
+    border:4px solid var(--pink);
+  }
+  .tl-item:nth-child(2n) .tl-dot{border-color:var(--purple);}
+  .tl-item:nth-child(3n) .tl-dot{border-color:var(--mint);}
+  .tl-card{
+    background:var(--card);
+    border-radius:22px;
+    padding:20px 22px;
+    box-shadow:0 8px 24px rgba(36,23,53,0.05);
+  }
+  .tl-date{
+    display:inline-block;
+    font-family:'Fredoka',sans-serif;
+    font-weight:600;
+    font-size:11.5px;
+    background:var(--ink);
+    color:#fff;
+    padding:4px 12px;
+    border-radius:14px;
+    margin-bottom:10px;
+  }
+  .tl-role{font-family:'Fredoka',sans-serif;font-weight:600;font-size:17px;margin:0 0 2px;}
+  .tl-org{font-size:13.5px;color:var(--ink-soft);margin-bottom:10px;}
+  .tl-card ul{margin:0;padding-left:18px;}
+  .tl-card li{font-size:14.5px;line-height:1.7;color:var(--ink-soft);}
+  .tl-link{
+    display:inline-flex;
+    align-items:center;
+    gap:5px;
+    margin-top:10px;
+    font-family:'Fredoka',sans-serif;
+    font-size:12.5px;
+    font-weight:600;
+    color:var(--pink);
+    text-decoration:none;
+  }
+  .tl-link:hover{color:var(--purple);}
+
+  /* ---------- PORTFOLIO BENTO GRID ---------- */
+  .bento-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:22px;
+  }
+  .bento-card{
+    background:var(--card);
+    border-radius:26px;
+    overflow:hidden;
+    box-shadow:0 10px 28px rgba(36,23,53,0.08);
+    position:relative;
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .bento-card:hover{transform:translateY(-6px) rotate(-0.6deg);box-shadow:0 18px 34px rgba(36,23,53,0.15);}
+  .bento-thumb{
+    height:150px;
+    position:relative;
+    overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .bento-thumb img,.bento-thumb video{width:100%;height:100%;object-fit:cover;display:block;}
+  .bento-thumb.split{display:flex;gap:2px;}
+  .bento-thumb.split img{width:50%;height:100%;}
+  .bento-emoji-tag{
+    position:absolute;top:10px;left:10px;
+    background:#fff;
+    font-size:17px;
+    width:34px;height:34px;
+    border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  }
+  .bento-body{padding:18px 20px 20px;}
+  .bento-year{
+    font-family:'Fredoka',sans-serif;
+    font-size:11px;
+    font-weight:600;
+    color:var(--purple);
+  }
+  .bento-title{font-family:'Fredoka',sans-serif;font-weight:600;font-size:16.5px;margin:5px 0 6px;}
+  .bento-desc{font-size:13px;line-height:1.6;color:var(--ink-soft);margin:0 0 14px;}
+  .bento-links{display:flex;gap:8px;flex-wrap:wrap;}
+  .bento-link{
+    font-family:'Fredoka',sans-serif;
+    font-size:11.5px;
+    font-weight:600;
+    background:var(--ink);
+    color:#fff;
+    padding:7px 14px;
+    border-radius:20px;
+    text-decoration:none;
+    transition:background .18s ease;
+  }
+  .bento-link:hover{background:var(--pink);}
+
+  .stay-tuned{
+    background:repeating-linear-gradient(135deg,var(--purple-soft),var(--purple-soft) 12px,var(--pink-soft) 12px,var(--pink-soft) 24px);
+  }
+  .stay-tuned-inner{
+    font-family:'Fredoka',sans-serif;
+    font-weight:700;
+    font-size:14px;
+    color:var(--ink);
+    text-align:center;
+  }
+
+  /* ---------- AWARDS ---------- */
+  .award-grid{display:flex;flex-direction:column;gap:16px;}
+  .award-card{
+    display:flex;
+    align-items:center;
+    gap:22px;
+    background:linear-gradient(120deg,var(--yellow-soft),#fff);
+    border:2px solid var(--yellow);
+    padding:24px 26px;
+    border-radius:26px;
+    max-width:640px;
+  }
+  .award-emoji{font-size:40px;line-height:1;flex-shrink:0;}
+  .award-title{font-family:'Fredoka',sans-serif;font-weight:700;font-size:17.5px;margin:0 0 4px;}
+  .award-sub{font-size:13.5px;margin:0 0 10px;color:var(--ink-soft);}
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    position:relative;
+    background:var(--ink);
+    color:#fff;
+    padding:60px 0 40px;
+    overflow:hidden;
+    border-radius:40px 40px 0 0;
+    margin-top:20px;
+  }
+  footer .blob-3{width:280px;height:280px;background:var(--purple);opacity:0.35;top:-100px;right:-60px;}
+  .foot-grid{
+    position:relative;z-index:2;
+    display:grid;
+    grid-template-columns:1fr auto;
+    gap:36px;
+    align-items:start;
+  }
+  .foot-contact h3{
+    font-family:'Fredoka',sans-serif;
+    font-size:13px;
+    letter-spacing:0.1em;
+    color:var(--yellow);
+    margin:0 0 16px;
+  }
+  .foot-contact ul{list-style:none;margin:0;padding:0;}
+  .foot-contact li{
+    font-size:14.5px;
+    margin-bottom:10px;
+    color:rgba(255,255,255,0.85);
+  }
+  .foot-contact a{text-decoration:none;color:inherit;}
+  .foot-contact a:hover{color:var(--pink);}
+  .pill-stamp{
+    font-family:'Fredoka',sans-serif;
+    font-weight:700;
+    font-size:13px;
+    background:linear-gradient(100deg,var(--pink),var(--purple));
+    color:#fff;
+    padding:18px 22px;
+    border-radius:22px;
+    text-align:center;
+    line-height:1.5;
+    white-space:nowrap;
+  }
+  .pill-stamp small{
+    display:block;
+    font-size:10px;
+    font-weight:500;
+    opacity:0.85;
+    margin-top:4px;
+  }
+  .foot-bottom{
+    position:relative;z-index:2;
+    margin-top:40px;
+    padding-top:20px;
+    border-top:1px solid rgba(255,255,255,0.14);
+    font-size:12px;
+    color:rgba(255,255,255,0.45);
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:8px;
+  }
+
+  @media (max-width:760px){
+    .hero-grid{grid-template-columns:1fr;}
+    .badge-wrap{order:-1;margin-bottom:16px;}
+    .photo-blob{width:200px;}
+    .foot-grid{grid-template-columns:1fr;}
+    .pill-stamp{width:fit-content;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    .marquee-track{animation:none;}
+    .bento-card,.btn{transition:none;}
+  }
+</style>
+</head>
+<body>
+
+<div class="marquee-strip">
+  <div class="marquee-track">
+    <span>🎬 COLLIDE — BEST SHORT FILM</span>
+    <span>✨</span>
+    <span>🏆 TIKTOK EFFECT HOUSE — #1 THAILAND</span>
+    <span>✨</span>
+    <span>🎪 SIHNSART SHOW 18</span>
+    <span>✨</span>
+    <span>🏠 LA-BYE</span>
+    <span>✨</span>
+    <span>🎬 COLLIDE — BEST SHORT FILM</span>
+    <span>✨</span>
+    <span>🏆 TIKTOK EFFECT HOUSE — #1 THAILAND</span>
+    <span>✨</span>
+    <span>🎪 SIHNSART SHOW 18</span>
+    <span>✨</span>
+    <span>🏠 LA-BYE</span>
+    <span>✨</span>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Phonlaphat<br><span class="hl">Suwannakhot</span></h1>
+      <div class="role-chip">🎓 B.A. in English · Liberal Arts</div>
+      <ul class="edu-block">
+        <li>Mae Fah Luang University · 2023–Present</li>
+        <li>GPA 3.35</li>
+        <li>Relevant coursework: Innovation and Technology in Language Learning and Cross-Cultural Communication.</li>
+        <li>Expected Graduation: June 2027</li>
+      </ul>
+      <div class="hero-cta">
+        <a href="#portfolio" class="btn btn-primary">View All Work ✨</a>
+        <a href="#contact" class="btn btn-ghost">Contact Me</a>
+      </div>
+    </div>
+    <div class="badge-wrap">
+      <div class="photo-blob">
+        <img src="profile.jpg" alt="Phonlaphat Suwannakhot">
+        <div class="sticker s1">🇬🇧</div>
+        <div class="sticker s2">LA 💪</div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="about-sec">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">01</span><h2>About Me</h2></div>
+    <div class="about-card">
+      <p>
+        I am an English major student at Mae Fah Luang University with experience in event
+        organization, graphic design, and student activities. Through my work with the Liberal
+        Arts Students Association, I have led different teams, designed posters, organized events,
+        and worked closely with others to make each project successful. I enjoy learning new
+        things, working with people, and taking on new challenges. I am looking forward to
+        gaining more experience and developing my skills through an internship.
+      </p>
+      <div class="about-tags">
+        <span class="tag">🎨 Graphic Design</span>
+        <span class="tag">🖼️ Poster Design</span>
+        <span class="tag">🎪 Event Planning</span>
+        <span class="tag">🎉 Event Decoration</span>
+        <span class="tag">👑 Team Leadership</span>
+        <span class="tag">🎬 Film Editing</span>
+        <span class="tag">🔊 Sound Design</span>
+        <span class="tag">✨ After Effects</span>
+        <span class="tag">📱 Content Creation</span>
+        <span class="tag">🗣️ English Communication</span>
+        <span class="tag">💻 Microsoft Office</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="exp-sec">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Experience</h2></div>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <span class="tl-date">2022–2024</span>
+          <p class="tl-role">Head of Art Department</p>
+          <p class="tl-org">Liberal Arts Students Association, Mae Fah Luang University</p>
+          <ul>
+            <li>Led the Art Department for School activities</li>
+            <li>Designed posters for events and promotional materials</li>
+            <li>Planned venue decorations and activity spaces</li>
+          </ul>
+          <a class="tl-link" href="https://www.instagram.com/liberalarts.sa.mfu_official" target="_blank" rel="noopener">📸 @liberalarts.sa.mfu_official</a>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <span class="tl-date">2024–Present</span>
+          <p class="tl-role">Head of Welfare Department</p>
+          <p class="tl-org">Liberal Arts Students Association, Mae Fah Luang University</p>
+          <ul>
+            <li>Lead the Welfare Department during School and university activities</li>
+            <li>Coordinate student services and support during events</li>
+            <li>Work with other departments to ensure activities run smoothly</li>
+            <li>Help solve problems and assist students throughout events</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <span class="tl-date">2025</span>
+          <p class="tl-role">Grand Opening Event Organizer</p>
+          <p class="tl-org">Progressive Mae Sai Project</p>
+          <ul>
+            <li>Helped organize the grand opening event and tested the AR tourist route</li>
+            <li>Assisted visitors in using the AR experience</li>
+            <li>Created promotional content for the Cultural Sunday Market (Kad Kom)</li>
+          </ul>
+          <a class="tl-link" href="https://www.facebook.com/share/1By3dgu9Fs/" target="_blank" rel="noopener">👉 View Post</a>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-card">
+          <span class="tl-date">2026</span>
+          <p class="tl-role">Head of Equipment Department</p>
+          <p class="tl-org">Producer Team, Sihnsart Show 18: "Gothel: The Other Side of the Tower"</p>
+          <ul>
+            <li>Led the Equipment Department throughout the project</li>
+            <li>Prepared equipment and materials for props and stage production</li>
+            <li>Led the venue decoration team and helped repair stage sets</li>
+            <li>Designed the official poster for Sihnsart Show 18</li>
+          </ul>
+          <a class="tl-link" href="https://www.instagram.com/sihnsartshow.la.mfu" target="_blank" rel="noopener">📸 @sihnsartshow.la.mfu</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="pinboard-sec" id="portfolio">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Design Portfolio</h2></div>
+    <div class="bento-grid">
+
+      <div class="bento-card">
+        <div class="bento-thumb">
+          <img src="collide-title.jpg" alt="COLLIDE short film title card" loading="lazy">
+          <div class="bento-emoji-tag">🎬</div>
+        </div>
+        <div class="bento-body">
+          <div class="bento-year">2026</div>
+          <p class="bento-title">COLLIDE — Short Film</p>
+          <p class="bento-desc">Winner, Best Short Film. Worked as Film Editor and Sound Designer on the project.</p>
+          <div class="bento-links">
+            <a class="bento-link" href="https://www.instagram.com/reel/DXixlkAiRPp/?igsh=d2ZmbWR0emh4Zjl3" target="_blank" rel="noopener">Watch Film</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card">
+        <div class="bento-thumb">
+          <video src="ae-reel.mp4" poster="ae-reel-poster.jpg" autoplay muted loop playsinline></video>
+          <div class="bento-emoji-tag">✨</div>
+        </div>
+        <div class="bento-body">
+          <div class="bento-year">2026</div>
+          <p class="bento-title">Motion &amp; VFX Reel</p>
+          <p class="bento-desc">Hands-on experience creating effects and motion graphics in Adobe After Effects.</p>
+          <div class="bento-links">
+            <a class="bento-link" href="https://www.instagram.com/reel/DU2IVgPErLb/?igsh=cDZrMXpxdG1oNmds" target="_blank" rel="noopener">Watch Reel</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card">
+        <div class="bento-thumb split">
+          <img src="sihnsart-crew.jpg" alt="Sihnsart Show 18 equipment crew team photo" loading="lazy">
+          <img src="sihnsart-poster.jpg" alt="Official Sihnsart Show 18 Gothel poster" loading="lazy">
+          <div class="bento-emoji-tag">🎪</div>
+        </div>
+        <div class="bento-body">
+          <div class="bento-year">2026</div>
+          <p class="bento-title">Sihnsart Show 18</p>
+          <p class="bento-desc">Equipment &amp; decoration team leader, prepared equipment and materials, helped repair stage sets, and designed the official poster.</p>
+          <div class="bento-links">
+            <a class="bento-link" href="https://www.facebook.com/share/p/1EGygJqBju/" target="_blank" rel="noopener">View Event</a>
+            <a class="bento-link" href="https://www.facebook.com/share/p/1BRb52BoKq/" target="_blank" rel="noopener">View Poster</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card">
+        <div class="bento-thumb">
+          <video src="labye-room.mp4" poster="labye-room-poster.jpg" autoplay muted loop playsinline></video>
+          <div class="bento-emoji-tag">🏠</div>
+        </div>
+        <div class="bento-body">
+          <div class="bento-year">2026</div>
+          <p class="bento-title">LA-BYE</p>
+          <p class="bento-desc">Designed the activity rooms and event activities.</p>
+          <div class="bento-links">
+            <a class="bento-link" href="https://www.facebook.com/share/p/14jkWhGNUCX/" target="_blank" rel="noopener">View Project</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card">
+        <div class="bento-thumb">
+          <img src="mae-sai-ar.jpg" alt="Testing the AR tourist route on-site" loading="lazy">
+          <div class="bento-emoji-tag">📱</div>
+        </div>
+        <div class="bento-body">
+          <div class="bento-year">2025</div>
+          <p class="bento-title">Progressive Mae Sai Project</p>
+          <p class="bento-desc">Grand opening event organizer, tested the AR tourist route, created promo content for the Kad Kom market.</p>
+          <div class="bento-links">
+            <a class="bento-link" href="https://www.facebook.com/share/1By3dgu9Fs/" target="_blank" rel="noopener">View Post</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card">
+        <div class="bento-thumb">
+          <img src="tiktok-proof.jpg" alt="TikTok Effect House Halloween winner announcement" loading="lazy">
+          <div class="bento-emoji-tag">🏆</div>
+        </div>
+        <div class="bento-body">
+          <div class="bento-year">2022</div>
+          <p class="bento-title">TikTok Effect House — 1st Place (Thailand)</p>
+          <p class="bento-desc">"Kra Sue" AR Effect ranked #1 with 112,651 uses in the national TikTok Effect House Halloween competition.</p>
+          <div class="bento-links">
+            <a class="bento-link" href="https://vt.tiktok.com/ZSXSKcKHH/" target="_blank" rel="noopener">View Effect</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="bento-card">
+        <div class="bento-thumb stay-tuned">
+          <div class="stay-tuned-inner">⏳<br>STAY TUNED</div>
+        </div>
+        <div class="bento-body">
+          <div class="bento-year">next up</div>
+          <p class="bento-title">More Work Coming Soon</p>
+          <p class="bento-desc">Currently seeking new experiences to grow 🌱</p>
+          <div class="bento-links">
+            <a class="bento-link" href="#contact">Get In Touch</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section class="award-sec">
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Honors &amp; Awards</h2></div>
+    <div class="award-grid">
+      <div class="award-card">
+        <div class="award-emoji">🎬</div>
+        <div>
+          <p class="award-title">Best Short Film — COLLIDE (2026)</p>
+          <p class="award-sub">Film Editing &amp; Sound Design</p>
+          <a class="tl-link" href="https://www.instagram.com/reel/DXixlkAiRPp/?igsh=d2ZmbWR0emh4Zjl3" target="_blank" rel="noopener">Watch Film ↗</a>
+        </div>
+      </div>
+      <div class="award-card">
+        <div class="award-emoji">🏆</div>
+        <div>
+          <p class="award-title">1st Place Winner (Thailand) — TikTok Effect House</p>
+          <p class="award-sub">"Kra Sue" AR Effect · National Competition · 2022</p>
+          <a class="tl-link" href="https://vt.tiktok.com/ZSXSKcKHH/" target="_blank" rel="noopener">View Effect ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="blob blob-3"></div>
+  <div class="wrap foot-grid">
+    <div class="foot-contact">
+      <h3>💌 CONTACT</h3>
+      <ul>
+        <li>☎️ <a href="tel:+66858579343">+66 85 857 9343</a></li>
+        <li>✉️ <a href="mailto:Phonlaphatsuwannakhot@gmail.com">Phonlaphatsuwannakhot@gmail.com</a></li>
+        <li>📍 235 Moo 4, Khok Sung, Khok Sung, Sa Kaeo 27120</li>
+      </ul>
+    </div>
+    <div class="pill-stamp">
+      AVAILABLE FOR<br>INTERNSHIP
+      <small>4 JAN — 23 APR 2027</small>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© Phonlaphat Suwannakhot</span>
+    <span></span>
+  </div>
+</footer>
+
+</body>
+</html>
